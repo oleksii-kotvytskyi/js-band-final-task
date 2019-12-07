@@ -6,9 +6,10 @@
     "eslint:recommended",
     "plugin:import/errors",
     "plugin:react/recommended",
-    "plugin:jsx-a11y/recommended"
+    "plugin:jsx-a11y/recommended",
+    "plugin:import/errors"
   ],
-  "plugins": ["prettier", "react", "jsx-a11y"],
+  "plugins": ["prettier", "react", "jsx-a11y", "import"],
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module",
@@ -43,19 +44,5 @@
     "jsx-a11y/no-noninteractive-element-interactions": 0,
     "jsx-a11y/click-events-have-key-events": 0,
     "react/no-did-update-set-state": 0
-  },
-  "settings": {
-    "react": {
-      "createClass": "createReactClass",
-      "pragma": "React",
-      "version": "detect",
-      "flowVersion": "0.53"
-    },
-    "propWrapperFunctions": [
-      "forbidExtraProps",
-      { "property": "freeze", "object": "Object" },
-      { "property": "myFavoriteWrapper" }
-    ],
-    "linkComponents": ["Hyperlink", { "name": "Link", "linkAttribute": "to" }]
   }
 }
