@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Switch, Route, Redirect } from 'react-router-dom';
-// import SignIn from './sign-in/sign-in';
+import SignInPage from '../../pages/sign-in';
 
 function NotFoundPage() {
   return <h1>Not Found...</h1>;
@@ -13,7 +13,8 @@ function App() {
       <Route exact path="/">
         <Redirect to="/signin" />
       </Route>
-      <Route path="/signin" component={() => <h1>Sign In Page</h1>} />
+      <Route path="/signin" component={SignInPage} />
+      <Route path="/books" component={() => <h1>Books Pages</h1>} />
       <Route path="*" component={NotFoundPage} />
     </Switch>
   );
