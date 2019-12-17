@@ -1,37 +1,59 @@
 import React from 'react';
-import AvatarImage from '../../assets/images/avatar-image.png';
+import LogoImage from '../../assets/images/logo-image.png';
+import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { signIn } from '../../redux/sign-in/actions';
 
-class SignInMain extends React.Component {
+class SignIn extends React.Component {
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+    signInCT: PropTypes.func.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
-      userName: '',
+      username: '',
     };
     this.userNameInput = React.createRef();
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-  errorMessage(e) {
-    e.target.setCustomValidity('Field is not valid');
-  }
+
   componentDidMount() {
-    this.userNameInput.current.addEventListener('invalid', this.errorMessage);
-  }
-  handleChange(e) {
-    this.setState({
-      userName: e.target.value,
+    const inputElement = this.userNameInput.current;
+    inputElement.addEventListener('invalid', () => {
+      inputElement.setCustomValidity('Field is not valid');
     });
   }
+  handleChange(e) {
+    const checkInput = e.target.value.length > 3 ? true : false;
+    this.setState({
+      username: e.target.value,
+    });
+
+    if (!checkInput) {
+      e.target.setCustomValidity('Field is not valid');
+    } else {
+      e.target.setCustomValidity('');
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
+    const { username } = this.state;
+    const { signInCT } = this.props;
+    signInCT({ username });
   }
 
   render() {
-    // const { userName } = this.state;
-
     return (
       <div className="container d-flex justify-content-center">
         <div className="container col-6 col-lg-4 text-center mt-5">
-          <img className="card-img-top rounded col-8" src={AvatarImage} alt="avatar" />
+          <img className="card-img-top rounded col-8" src={LogoImage} alt="avatar" />
           <form
             className="d-flex flex-column align-items-center"
             onSubmit={this.handleSubmit}
@@ -60,4 +82,8 @@ class SignInMain extends React.Component {
   }
 }
 
-export default SignInMain;
+const mapDispatchToProps = dispatch => ({
+  signInCT: userName => dispatch(signIn(userName)),
+});
+
+export default connect(null, mapDispatchToProps)(withRouter(SignIn));

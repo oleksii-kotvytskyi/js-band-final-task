@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/header';
-import SignIn from '../components/sign-in';
+import SignIn from '../components/sign-in/sign-in';
 
 const SigninPage = () => (
   <>
