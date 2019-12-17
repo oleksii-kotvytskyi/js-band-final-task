@@ -1,7 +1,7 @@
 import { SIGN_IN_SUCCESS, SIGN_IN_ERROR } from './actions';
 
 const initialState = {
-  isAuthentificated: false,
+  isAuthentificated: !!localStorage.getItem('token'),
   error: undefined,
   avatar: undefined,
   token: undefined,

@@ -1,18 +1,11 @@
 import React from 'react';
-import LogoImage from '../../assets/images/logo-image.png';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import LogoImage from '../../assets/images/logo-image.png';
 import { signIn } from '../../redux/sign-in/actions';
 
 class SignIn extends React.Component {
-  static propTypes = {
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
-    signInCT: PropTypes.func.isRequired,
-  };
-
   constructor(props) {
     super(props);
     this.state = {
@@ -24,13 +17,28 @@ class SignIn extends React.Component {
   }
 
   componentDidMount() {
+    const { isAuthentificated, history } = this.props;
     const inputElement = this.userNameInput.current;
+
     inputElement.addEventListener('invalid', () => {
       inputElement.setCustomValidity('Field is not valid');
     });
+
+    if (isAuthentificated) {
+      history.replace('/books');
+    }
   }
+
+  componentDidUpdate() {
+    const { isAuthentificated, history } = this.props;
+
+    if (isAuthentificated) {
+      history.replace('/books');
+    }
+  }
+
   handleChange(e) {
-    const checkInput = e.target.value.length > 3 ? true : false;
+    const checkInput = e.target.value.length > 3;
     this.setState({
       username: e.target.value,
     });
@@ -63,7 +71,7 @@ class SignIn extends React.Component {
               <input
                 type="text"
                 placeholder="type Username"
-                className="form-control  text-center"
+                className="form-control text-center"
                 minLength={4}
                 maxLength={16}
                 ref={this.userNameInput}
@@ -82,8 +90,19 @@ class SignIn extends React.Component {
   }
 }
 
+SignIn.propTypes = {
+  history: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  signInCT: PropTypes.func.isRequired,
+  isAuthentificated: PropTypes.bool.isRequired,
+};
+
 const mapDispatchToProps = dispatch => ({
   signInCT: userName => dispatch(signIn(userName)),
 });
 
-export default connect(null, mapDispatchToProps)(withRouter(SignIn));
+export default connect(
+  state => ({
+    isAuthentificated: state.signInReducer.isAuthentificated,
+  }),
+  mapDispatchToProps,
+)(withRouter(SignIn));
