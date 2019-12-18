@@ -31,5 +31,5 @@ export const getBook = id => (dispatch, getState) => {
   dispatch(getBookRequest());
   getBookAPI(token, id)
     .then(({ data }) => dispatch(getBookSucces(data)))
-    .catch(({ response: { data: err } }) => dispatch(getBookError(err)));
+    .catch(err => dispatch(getBookError(err)));
 };

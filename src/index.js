@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import App from './components/app';
-import './styles/main-styles';
 import { store } from './redux/store';
 
 ReactDOM.render(

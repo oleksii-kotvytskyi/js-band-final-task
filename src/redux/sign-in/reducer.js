@@ -1,11 +1,15 @@
 import { SIGN_IN_SUCCESS, SIGN_IN_ERROR, SIGN_IN_REQUEST } from './actions';
 
+const userInfo = localStorage.getItem('userInfo')
+  ? JSON.parse(localStorage.getItem('userInfo'))
+  : undefined;
+
 const initialState = {
-  isAuthentificated: !!localStorage.getItem('token'),
+  isAuthentificated: !!localStorage.getItem('userInfo'),
   error: undefined,
-  avatar: undefined,
-  token: localStorage.getItem('token'),
-  username: undefined,
+  avatar: userInfo ? userInfo.avatar : undefined,
+  token: userInfo ? userInfo.token : undefined,
+  username: userInfo ? userInfo.username : undefined,
   isLoading: false,
 };
 
@@ -25,7 +29,12 @@ const signInReducer = (state = initialState, action) => {
       const {
         payload: { avatar, token, username },
       } = action;
-      localStorage.setItem('token', token);
+      const signInUserInfo = {
+        token,
+        avatar,
+        username,
+      };
+      localStorage.setItem('userInfo', JSON.stringify(signInUserInfo));
       return {
         ...state,
         isAuthentificated: true,
