@@ -25,6 +25,7 @@ class Book extends React.Component {
 
   render() {
     const { isLoading, error } = this.props;
+
     return (
       <>
         {isLoading && <Spinner />}
@@ -60,6 +61,7 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   state => ({
     isLoading: state.bookReducer.isLoading,
+    error: state.bookReducer.error,
   }),
   mapDispatchToProps,
 )(withRouter(Book));
