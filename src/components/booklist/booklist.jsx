@@ -5,7 +5,7 @@ import { getBooks } from '../../redux/books/actions';
 import BookListItem from '../booklist-item';
 import Spinner from '../spinner';
 
-class Books extends React.Component {
+class BookList extends React.Component {
   componentDidMount() {
     const { books, getBooksCT } = this.props;
     if (!books) getBooksCT();
@@ -31,12 +31,12 @@ class Books extends React.Component {
     );
   }
 }
-Books.defaultProps = {
+BookList.defaultProps = {
   books: PropTypes.undefined,
   error: PropTypes.undefined,
 };
 
-Books.propTypes = {
+BookList.propTypes = {
   books: PropTypes.oneOfType([PropTypes.array]),
   getBooksCT: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
@@ -54,4 +54,4 @@ export default connect(
     error: state.booksReducer.error,
   }),
   mapDispatchToProps,
-)(Books);
+)(BookList);
