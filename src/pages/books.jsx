@@ -1,11 +1,11 @@
 import React from 'react';
 import Header from '../components/header';
-import Books from '../components/books';
+import BookList from '../components/booklist';
 
 const BooksPage = () => (
   <>
     <Header />
-    <Books />
+    <BookList />
   </>
 );
 
