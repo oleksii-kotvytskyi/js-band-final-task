@@ -39,6 +39,7 @@ const bookReducer = (state = initialState, action) => {
       return {
         ...state,
         book: undefined,
+        error: undefined,
       };
     }
     default: {

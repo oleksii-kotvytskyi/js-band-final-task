@@ -7,3 +7,16 @@
   margin: 0;
   color: white;
 }
+.cart-countbooks {
+  position: relative;
+  color: black;
+  top: -50px;
+  right: -40px;
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  background-color: white;
+  padding: 1px;
+}

@@ -1,14 +1,12 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.css';
+import '../../styles';
 import SignInPage from '../../pages/sign-in';
 import BooksPage from '../../pages/books';
 import BookPage from '../../pages/book';
-import '../../styles';
-
-function NotFoundPage() {
-  return <h1>Not Found...</h1>;
-}
+import CartPage from '../../pages/cart';
+import NotFoundPage from '../../pages/notfound';
 
 function App() {
   return (
@@ -19,6 +17,7 @@ function App() {
       <Route exact path="/signin" component={SignInPage} />
       <Route exact path="/books" component={BooksPage} />
       <Route exact path="/books/:id" component={BookPage} />
+      <Route exact path="/cart" component={CartPage} />
       <Route path="*" component={NotFoundPage} />
     </Switch>
   );

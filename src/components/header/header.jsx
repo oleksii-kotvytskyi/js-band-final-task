@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Cart from '../../assets/images/cart.png';
+import { getCountBooksInCart } from '../../redux/cart/reducer';
 
-const Header = ({ isAuthentificated, avatar, username }) => {
+const Header = ({ isAuthentificated, avatar, username, countBooksInCart }) => {
   return (
     <div>
       <div className="bg-secondary border-bottom d-flex justify-content-around flex-wrap">
@@ -13,7 +15,10 @@ const Header = ({ isAuthentificated, avatar, username }) => {
         {isAuthentificated && (
           <ul className="header-nav-list">
             <li>
-              <img src={Cart} alt="cart" width="50" height="50" />
+              <Link to="/cart" style={{ textDecoration: 'none' }}>
+                <img src={Cart} alt="cart" width="50" height="50" className="mt-3" />
+                <div className="cart-countbooks">{countBooksInCart}</div>
+              </Link>
             </li>
             <li>
               <button type="button" className="btn btn-light">
@@ -46,6 +51,7 @@ Header.propTypes = {
   isAuthentificated: PropTypes.bool.isRequired,
   avatar: PropTypes.string,
   username: PropTypes.string,
+  countBooksInCart: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = state => {
@@ -53,6 +59,7 @@ const mapStateToProps = state => {
     isAuthentificated: state.signInReducer.isAuthentificated,
     avatar: state.signInReducer.avatar,
     username: state.signInReducer.username,
+    countBooksInCart: getCountBooksInCart(state),
   };
 };
 
