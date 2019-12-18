@@ -4,9 +4,11 @@ const initialState = {
   isAuthentificated: !!localStorage.getItem('token'),
   error: undefined,
   avatar: undefined,
-  token: undefined,
+  token: localStorage.getItem('token'),
   username: undefined,
 };
+
+export const getToken = state => state.signInReducer.token;
 
 const signInReducer = (state = initialState, action) => {
   const { type } = action;
