@@ -1,3 +1,6 @@
 .col-6 {
   padding: 0 !important;
 }
+.book-cart__input {
+  width: 90px;
+}

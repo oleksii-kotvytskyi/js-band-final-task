@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import SignInPage from '../../pages/sign-in';
 import BooksPage from '../../pages/books';
 import BookPage from '../../pages/book';
+import '../../styles';
 
 function NotFoundPage() {
   return <h1>Not Found...</h1>;

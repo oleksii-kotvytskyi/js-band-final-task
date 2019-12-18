@@ -18,7 +18,7 @@ class BookList extends React.Component {
       <>
         {isLoading && <Spinner />}
         {error && (
-          <div className="booklist-erroMessage">Oops... You should Authorize</div>
+          <div className="booklist-erroMessage">Oops... Something went wrong</div>
         )}
         {books && (
           <ul className="bookList">
