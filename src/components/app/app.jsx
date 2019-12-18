@@ -2,6 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import SignInPage from '../../pages/sign-in';
+import BooksPage from '../../pages/books';
 
 function NotFoundPage() {
   return <h1>Not Found...</h1>;
@@ -14,7 +15,7 @@ function App() {
         <Redirect to="/signin" />
       </Route>
       <Route path="/signin" component={SignInPage} />
-      <Route path="/books" component={() => <h1>Books Pages</h1>} />
+      <Route path="/books" component={BooksPage} />
       <Route path="*" component={NotFoundPage} />
     </Switch>
   );
