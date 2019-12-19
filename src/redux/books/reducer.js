@@ -21,6 +21,7 @@ const booksReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         books: action.payload,
+        error: undefined,
       };
     }
     case GET_BOOKS_ERROR: {

@@ -66,6 +66,7 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         books: [],
+        error: undefined,
       };
     }
     case PURCHASE_BOOKS_ERROR: {
