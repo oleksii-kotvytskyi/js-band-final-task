@@ -20,7 +20,7 @@ class BookCart extends React.Component {
     const { book } = this.props;
     const price = book ? book.price : 0;
     const result = (e.target.value * price).toFixed(2);
-    this.setState({ countPrice: result, countBooks: e.target.value });
+    this.setState({ countPrice: Number(result), countBooks: e.target.value });
   }
 
   handleSubmit(e) {

@@ -17,7 +17,9 @@ function sorted(filter, books) {
   }
 
   if (filter.title) {
-    copyBooks = copyBooks.filter(book => book.title.includes(filter.title));
+    copyBooks = copyBooks.filter(book =>
+      book.title.toLowerCase().includes(filter.title.toLowerCase()),
+    );
   }
 
   return copyBooks;
