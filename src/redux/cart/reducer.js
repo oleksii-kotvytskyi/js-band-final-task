@@ -3,6 +3,7 @@ import {
   PURCHASE_BOOKS_ERROR,
   PURCHASE_BOOKS_REQUEST,
   PURCHASE_BOOKS_SUCCES,
+  CLEAR_CART_AFTER_LOGOUT,
 } from './actions';
 
 const books = JSON.parse(localStorage.getItem('cart'))
@@ -17,7 +18,13 @@ const initialState = {
 
 export const getCountBooksInCart = state =>
   state.cartReducer.books.reduce(
-    (acumulator, book) => acumulator + Number(book.count),
+    (acumulator, book) => Number(acumulator) + Number(book.count),
+    0,
+  );
+
+export const getCountPriceBooksIcCart = state =>
+  state.cartReducer.books.reduce(
+    (acumulator, book) => Number(acumulator) + Number(book.totalPrice),
     0,
   );
 
@@ -63,6 +70,12 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         error: action.payload,
+      };
+    }
+    case CLEAR_CART_AFTER_LOGOUT: {
+      return {
+        ...state,
+        books: [],
       };
     }
     default: {

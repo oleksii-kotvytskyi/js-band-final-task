@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { getCountPriceBooksIcCart } from '../../redux/cart/reducer';
 
-const Cart = ({ booksInCart }) => {
+const Cart = ({ booksInCart, totalPrice }) => {
   return (
     <div className="container-fluid">
       <div className="container-fluid d-flex justify-content-center col-6 mt-5">
@@ -26,7 +27,7 @@ const Cart = ({ booksInCart }) => {
         </table>
       </div>
       <div className="d-flex justify-content-center font-weight-bold">
-        Total Price ${booksInCart.reduce((ac, book) => ac + Number(book.totalPrice), 0)}
+        Total Price ${totalPrice}
       </div>
     </div>
   );
@@ -34,11 +35,13 @@ const Cart = ({ booksInCart }) => {
 
 Cart.propTypes = {
   booksInCart: PropTypes.oneOfType([PropTypes.array]).isRequired,
+  totalPrice: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = state => {
   return {
     booksInCart: state.cartReducer.books,
+    totalPrice: getCountPriceBooksIcCart(state),
   };
 };
 
