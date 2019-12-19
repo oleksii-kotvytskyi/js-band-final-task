@@ -73,9 +73,10 @@ class BookCart extends React.Component {
                 <span>In Stock:</span>
                 <span>{actualCountBooks} books</span>
               </div>
-              <label className="d-flex justify-content-between mt-3">
+              <label className="d-flex justify-content-between mt-3" htmlFor="countbooks">
                 Count
                 <input
+                  id="countbooks"
                   ref={this.inputRef}
                   type="number"
                   className="form-control book-cart__input"

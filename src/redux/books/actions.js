@@ -22,7 +22,6 @@ export const getBooksError = err => ({
 export const getBooks = () => (dispatch, getState) => {
   const token = getToken(getState());
 
-  if (!token) return;
   dispatch(getBooksRequest());
   getBooksAPI(token)
     .then(({ data }) => dispatch(getBooksSucces(data)))

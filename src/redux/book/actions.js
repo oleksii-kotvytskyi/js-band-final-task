@@ -27,7 +27,6 @@ export const removeBookFromStore = () => ({
 export const getBook = id => (dispatch, getState) => {
   const token = getToken(getState());
 
-  if (!token) return;
   dispatch(getBookRequest());
   getBookAPI(token, id)
     .then(({ data }) => dispatch(getBookSucces(data)))

@@ -23,10 +23,9 @@ export const getCountBooksInCart = state =>
   );
 
 export const getCountPriceBooksIcCart = state =>
-  state.cartReducer.books.reduce(
-    (acumulator, book) => Number(acumulator) + Number(book.totalPrice),
-    0,
-  );
+  state.cartReducer.books
+    .reduce((acumulator, book) => Number(acumulator) + Number(book.totalPrice), 0)
+    .toFixed(2);
 
 const cartReducer = (state = initialState, action) => {
   const { type } = action;
@@ -61,14 +60,17 @@ const cartReducer = (state = initialState, action) => {
       };
     }
     case PURCHASE_BOOKS_SUCCES: {
+      localStorage.removeItem('cart');
       return {
         ...state,
-        books: undefined,
+        isLoading: false,
+        books: [],
       };
     }
     case PURCHASE_BOOKS_ERROR: {
       return {
         ...state,
+        isLoading: false,
         error: action.payload,
       };
     }

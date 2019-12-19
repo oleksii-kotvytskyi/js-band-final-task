@@ -66,15 +66,16 @@ class SignIn extends React.Component {
           <Spinner />
         ) : (
           <div className="container d-flex justify-content-center">
-            <div className="container col-6 col-lg-4 text-center mt-5">
+            <div className="container col-12 col-sm-8  col-lg-4 text-center mt-5">
               <img className="card-img-top rounded col-8" src={LogoImage} alt="avatar" />
               <form
                 className="d-flex flex-column align-items-center"
                 onSubmit={this.handleSubmit}
               >
-                <label className="mt-3 col-11 font-weight-bold">
+                <label className="mt-3 col-11 font-weight-bold" htmlFor="username">
                   Username
                   <input
+                    id="username"
                     type="text"
                     placeholder="type Username"
                     className="form-control text-center"
