@@ -32,7 +32,7 @@ class Book extends React.Component {
         {error && (
           <div className="booklist-erroMessage">Oops... Something went wrong </div>
         )}
-        <div className="container-fluid d-flex justify-content-between mt-5">
+        <div className="container-fluid d-flex justify-content-between mt-5 flex-wrap">
           <BookDescription />
           <BookCart />
         </div>

@@ -63,7 +63,7 @@ class BookCart extends React.Component {
     return (
       <>
         {book && (
-          <div className="card mb-3 col-5 bg-light align-self-center">
+          <div className="card mb-3 col-sm-10 col-md-5 bg-light ml-auto mr-auto bg-light align-self-center">
             <form onSubmit={this.handleSubmit}>
               <div className="d-flex justify-content-between mt-3">
                 <span>Price:</span>
@@ -79,11 +79,13 @@ class BookCart extends React.Component {
                   id="countbooks"
                   ref={this.inputRef}
                   type="number"
-                  className="form-control book-cart__input"
+                  className="form-control"
+                  width="90"
                   min={0}
                   max={actualCountBooks}
                   onChange={this.handleChange}
                   placeholder="0"
+                  style={{ width: '80px' }}
                 />
               </label>
               <div className="d-flex justify-content-between mt-3">
