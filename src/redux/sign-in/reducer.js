@@ -1,11 +1,16 @@
-import { SIGN_IN_SUCCESS, SIGN_IN_ERROR, SIGN_IN_REQUEST } from './actions';
+import {
+  SIGN_IN_SUCCESS,
+  SIGN_IN_ERROR,
+  SIGN_IN_REQUEST,
+  HANDLE_LOGOUT,
+} from './actions';
 
 const userInfo = localStorage.getItem('userInfo')
   ? JSON.parse(localStorage.getItem('userInfo'))
   : undefined;
 
 const initialState = {
-  isAuthentificated: !!localStorage.getItem('userInfo'),
+  isAuthentificated: !!userInfo,
   error: undefined,
   avatar: userInfo ? userInfo.avatar : undefined,
   token: userInfo ? userInfo.token : undefined,
@@ -14,6 +19,8 @@ const initialState = {
 };
 
 export const getToken = state => state.signInReducer.token;
+
+export const getAuthentificated = state => state.signInReducer.isAuthentificated;
 
 const signInReducer = (state = initialState, action) => {
   const { type } = action;
@@ -50,6 +57,19 @@ const signInReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         error: payload.error,
+      };
+    }
+    case HANDLE_LOGOUT: {
+      localStorage.removeItem('userInfo');
+      if (localStorage.getItem('cart')) {
+        localStorage.removeItem('cart');
+      }
+      return {
+        ...state,
+        avatar: undefined,
+        token: undefined,
+        username: undefined,
+        isAuthentificated: false,
       };
     }
     default: {
