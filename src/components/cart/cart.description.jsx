@@ -27,7 +27,7 @@ const CartDescription = ({ booksInCart, totalPrice }) => {
         </table>
       </div>
       <div className="d-flex justify-content-center font-weight-bold">
-        Total Price ${totalPrice}
+        Total Price ${totalPrice.toFixed(2)}
       </div>
     </>
   );

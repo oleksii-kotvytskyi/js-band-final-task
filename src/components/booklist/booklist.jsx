@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { getBooks } from '../../redux/books/actions';
 import BookListItem from '../booklist-item';
 import Spinner from '../spinner';
+import FiltersForBookList from './booklist.filters';
+import sorted from '../../helpers/sorted';
 
 class BookList extends React.Component {
   componentDidMount() {
@@ -12,7 +14,8 @@ class BookList extends React.Component {
   }
 
   render() {
-    const { books, isLoading, error } = this.props;
+    const { books, isLoading, error, filter } = this.props;
+    const filterBooks = books ? sorted(filter, books) : books;
 
     return (
       <>
@@ -21,11 +24,14 @@ class BookList extends React.Component {
           <div className="booklist-erroMessage">Oops... Something went wrong</div>
         )}
         {books && (
-          <ul className="bookList">
-            {books.map(book => (
-              <BookListItem key={book.id} book={book} />
-            ))}
-          </ul>
+          <>
+            <FiltersForBookList />
+            <ul className="bookList">
+              {filterBooks.map(book => (
+                <BookListItem key={book.id} book={book} />
+              ))}
+            </ul>
+          </>
         )}
       </>
     );
@@ -40,6 +46,10 @@ BookList.propTypes = {
   books: PropTypes.oneOfType([PropTypes.array]),
   getBooksCT: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  filter: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+  }).isRequired,
   error: PropTypes.oneOfType([PropTypes.object]),
 };
 
@@ -52,6 +62,7 @@ export default connect(
     books: state.booksReducer.books,
     isLoading: state.booksReducer.isLoading,
     error: state.booksReducer.error,
+    filter: state.filterReducer,
   }),
   mapDispatchToProps,
 )(BookList);

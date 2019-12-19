@@ -23,9 +23,10 @@ export const getCountBooksInCart = state =>
   );
 
 export const getCountPriceBooksIcCart = state =>
-  state.cartReducer.books
-    .reduce((acumulator, book) => Number(acumulator) + Number(book.totalPrice), 0)
-    .toFixed(2);
+  state.cartReducer.books.reduce(
+    (acumulator, book) => Number(acumulator) + Number(book.totalPrice),
+    0,
+  );
 
 const cartReducer = (state = initialState, action) => {
   const { type } = action;
