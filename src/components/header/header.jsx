@@ -4,8 +4,16 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Cart from '../../assets/images/cart.png';
 import { getCountBooksInCart } from '../../redux/cart/reducer';
+import { handleLogout } from '../../redux/sign-in/actions';
+import { clearCartAfterLogOut } from '../../redux/cart/actions';
 
-const Header = ({ isAuthentificated, avatar, username, countBooksInCart }) => {
+const Header = ({
+  isAuthentificated,
+  avatar,
+  username,
+  countBooksInCart,
+  handleLogoutCT,
+}) => {
   return (
     <div>
       <div className="bg-secondary border-bottom d-flex justify-content-around flex-wrap">
@@ -21,7 +29,7 @@ const Header = ({ isAuthentificated, avatar, username, countBooksInCart }) => {
               </Link>
             </li>
             <li>
-              <button type="button" className="btn btn-light">
+              <button type="button" className="btn btn-light" onClick={handleLogoutCT}>
                 Sign Out
               </button>
             </li>
@@ -52,6 +60,7 @@ Header.propTypes = {
   avatar: PropTypes.string,
   username: PropTypes.string,
   countBooksInCart: PropTypes.number.isRequired,
+  handleLogoutCT: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
@@ -63,4 +72,11 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = distaptch => ({
+  handleLogoutCT: () => {
+    distaptch(handleLogout());
+    distaptch(clearCartAfterLogOut());
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

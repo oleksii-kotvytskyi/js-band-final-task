@@ -7,6 +7,7 @@ import BooksPage from '../../pages/books';
 import BookPage from '../../pages/book';
 import CartPage from '../../pages/cart';
 import NotFoundPage from '../../pages/notfound';
+import PrivateComponent from '../hoc';
 
 function App() {
   return (
@@ -15,9 +16,9 @@ function App() {
         <Redirect to="/signin" />
       </Route>
       <Route exact path="/signin" component={SignInPage} />
-      <Route exact path="/books" component={BooksPage} />
-      <Route exact path="/books/:id" component={BookPage} />
-      <Route exact path="/cart" component={CartPage} />
+      <PrivateComponent exact path="/books" component={BooksPage} />
+      <PrivateComponent exact path="/books/:id" component={BookPage} />
+      <PrivateComponent exact path="/cart" component={CartPage} />
       <Route path="*" component={NotFoundPage} />
     </Switch>
   );
