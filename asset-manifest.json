@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/js-band-final-task/static/css/main.cfb0a408.chunk.css",
-    "main.js": "/js-band-final-task/static/js/main.056c74a6.chunk.js",
-    "main.js.map": "/js-band-final-task/static/js/main.056c74a6.chunk.js.map",
+    "main.css": "/js-band-final-task/static/css/main.312f9406.chunk.css",
+    "main.js": "/js-band-final-task/static/js/main.23a1ffb7.chunk.js",
+    "main.js.map": "/js-band-final-task/static/js/main.23a1ffb7.chunk.js.map",
     "runtime-main.js": "/js-band-final-task/static/js/runtime-main.b8d53894.js",
     "runtime-main.js.map": "/js-band-final-task/static/js/runtime-main.b8d53894.js.map",
     "static/css/2.64a99b10.chunk.css": "/js-band-final-task/static/css/2.64a99b10.chunk.css",
-    "static/js/2.12afdda0.chunk.js": "/js-band-final-task/static/js/2.12afdda0.chunk.js",
-    "static/js/2.12afdda0.chunk.js.map": "/js-band-final-task/static/js/2.12afdda0.chunk.js.map",
+    "static/js/2.5552f868.chunk.js": "/js-band-final-task/static/js/2.5552f868.chunk.js",
+    "static/js/2.5552f868.chunk.js.map": "/js-band-final-task/static/js/2.5552f868.chunk.js.map",
     "index.html": "/js-band-final-task/index.html",
-    "precache-manifest.9f878c678df33cde16848246d3668ec0.js": "/js-band-final-task/precache-manifest.9f878c678df33cde16848246d3668ec0.js",
+    "precache-manifest.3a2d7af466570745cf50bf195dfe3662.js": "/js-band-final-task/precache-manifest.3a2d7af466570745cf50bf195dfe3662.js",
     "service-worker.js": "/js-band-final-task/service-worker.js",
     "static/css/2.64a99b10.chunk.css.map": "/js-band-final-task/static/css/2.64a99b10.chunk.css.map",
-    "static/css/main.cfb0a408.chunk.css.map": "/js-band-final-task/static/css/main.cfb0a408.chunk.css.map",
-    "static/js/2.12afdda0.chunk.js.LICENSE": "/js-band-final-task/static/js/2.12afdda0.chunk.js.LICENSE",
+    "static/css/main.312f9406.chunk.css.map": "/js-band-final-task/static/css/main.312f9406.chunk.css.map",
+    "static/js/2.5552f868.chunk.js.LICENSE": "/js-band-final-task/static/js/2.5552f868.chunk.js.LICENSE",
     "static/media/logo-image.png": "/js-band-final-task/static/media/logo-image.22826269.png"
   },
   "entrypoints": [
     "static/js/runtime-main.b8d53894.js",
     "static/css/2.64a99b10.chunk.css",
-    "static/js/2.12afdda0.chunk.js",
-    "static/css/main.cfb0a408.chunk.css",
-    "static/js/main.056c74a6.chunk.js"
+    "static/js/2.5552f868.chunk.js",
+    "static/css/main.312f9406.chunk.css",
+    "static/js/main.23a1ffb7.chunk.js"
   ]
 }
