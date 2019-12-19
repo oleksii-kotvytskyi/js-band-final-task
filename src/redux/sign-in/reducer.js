@@ -56,7 +56,7 @@ const signInReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        error: payload.error,
+        error: payload,
       };
     }
     case HANDLE_LOGOUT: {
