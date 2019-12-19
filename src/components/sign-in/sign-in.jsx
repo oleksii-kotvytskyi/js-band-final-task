@@ -59,9 +59,11 @@ class SignIn extends React.Component {
   }
 
   render() {
-    const { isLoading } = this.props;
+    const { isLoading, error } = this.props;
+
     return (
       <>
+        {error && <div className="text-center mt-5">Ooops... Something went wrong</div>}
         {isLoading ? (
           <Spinner />
         ) : (
@@ -99,11 +101,16 @@ class SignIn extends React.Component {
   }
 }
 
+SignIn.defaultProps = {
+  error: PropTypes.undefined,
+};
+
 SignIn.propTypes = {
   history: PropTypes.oneOfType([PropTypes.object]).isRequired,
   signInCT: PropTypes.func.isRequired,
   isAuthentificated: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  error: PropTypes.oneOfType([PropTypes.object]),
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -114,6 +121,7 @@ export default connect(
   state => ({
     isAuthentificated: state.signInReducer.isAuthentificated,
     isLoading: state.signInReducer.isLoading,
+    error: state.signInReducer.error,
   }),
   mapDispatchToProps,
 )(withRouter(SignIn));
