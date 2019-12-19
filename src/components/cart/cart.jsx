@@ -14,7 +14,7 @@ class Cart extends React.Component {
       purchase: {
         value: false,
         messageSucces: 'Thank you for purchasing books in our store!',
-        messageError: 'Requset is invalid',
+        messageError: 'Request is invalid',
       },
     };
     this.handleClick = this.handleClick.bind(this);
