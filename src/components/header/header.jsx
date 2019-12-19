@@ -17,11 +17,19 @@ const Header = ({
   return (
     <div>
       <div className="bg-secondary border-bottom d-flex justify-content-around flex-wrap">
-        <h1 className="h2 text-left pt-3 pb-2 pl-5" style={{ color: 'white' }}>
+        <h1 className="h2 pt-4 pb-2 pl-5" style={{ color: 'white' }}>
           JS BAND STORE/ Aleksei Kotvitskyi
         </h1>
         {isAuthentificated && (
           <ul className="header-nav-list">
+            <li>
+              <Link to="/books" style={{ textDecoration: 'none' }}>
+                <button type="button" className="btn btn-light">
+                  Catalog
+                </button>
+                {/* <span className="nav-catalog">Catalog</span> */}
+              </Link>
+            </li>
             <li>
               <Link to="/cart" style={{ textDecoration: 'none' }}>
                 <img src={Cart} alt="cart" width="50" height="50" className="mt-3" />
@@ -29,7 +37,7 @@ const Header = ({
               </Link>
             </li>
             <li>
-              <button type="button" className="btn btn-light" onClick={handleLogoutCT}>
+              <button type="button" className="btn btn-warning" onClick={handleLogoutCT}>
                 Sign Out
               </button>
             </li>
