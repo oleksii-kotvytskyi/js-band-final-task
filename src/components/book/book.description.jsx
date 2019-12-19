@@ -10,9 +10,12 @@ const BookDescription = props => {
   return (
     <>
       {book && (
-        <div className="card mb-3 col-6  bg-light ">
+        <div
+          className="card mb-3 col-sm-10 col-md-6 bg-light ml-auto mr-auto"
+          style={{ padding: 0 }}
+        >
           <div className="row no-gutters">
-            <div className="pl-3 pt-3 col-md-4">
+            <div className="pl-3 pt-3 col-md-4 pr-3">
               <img src={book.cover} className="card-img" alt={book.title} />
             </div>
             <div className="col-md-8">
